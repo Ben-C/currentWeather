@@ -20,7 +20,7 @@ if ("geolocation" in navigator) {
     const weather_data = await weather_response.json();
     console.log(weather_data);
     const city_name = 
-    "http://api.openweathermap.org/geo/1.0/reverse?lat=" + 
+    "https://api.openweathermap.org/geo/1.0/reverse?lat=" + 
     lat + 
     "&lon=" + 
     lon +
@@ -49,7 +49,7 @@ async function getCity() {
   const city_data = await city_response.json();
   console.log(city_data);
   const city_name = 
-    "http://api.openweathermap.org/geo/1.0/reverse?lat=" + 
+    "https://api.openweathermap.org/geo/1.0/reverse?lat=" + 
     city_data["coord"]["lat"] + 
     "&lon=" + 
     city_data["coord"]["lon"] +
