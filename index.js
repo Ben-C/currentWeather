@@ -39,4 +39,6 @@ async function geoCode(city, api_key) {
   const city_response = await fetch(city_weather);
   const city_data = await city_response.json();
   console.log(city_data);
+  document.getElementById("Longitude").textContent = city_data['weather'][0]['description'];
+    document.getElementById("Latitude").textContent = city_data['main']['temp'];
 }
