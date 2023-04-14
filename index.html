@@ -10,10 +10,12 @@
     <form>
       <label fpr="userInput">Enter city name: </label>
       <input id="userInput" type="text" />
-      <input type="submit" value="Submit" onclick="getCity()" />
+      <input type="button" value="Submit" onclick="getCity()" />
     </form>
-    <h1 id="Latitude"></h1>
-    <h1 id="Longitude"></h1>
+    <div><p>Current location: </p><p id="cityName"></p></div>
+    <div><p>The current temperature is: </p><p id="temp"></p></div>
+    <div><p>It actually feels like: </p><p id="feels_like"></p></div>
+    <div><p>Description of the weather is: </p><p id="weather_description"></p></div>
     <script src="./index.js"></script>
   </body>
 </html>
