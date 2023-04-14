@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+let city;
 let lat;
 let lon;
 if('geolocation' in navigator){
@@ -15,4 +15,9 @@ if('geolocation' in navigator){
     document.getElementById('Longitude').textContent = lon;
     document.getElementById('Latitude').textContent = lat;
 });
+};
+
+function getCity {
+    city = document.getElementById('userInput').value;
+    console.log(city);
 }
