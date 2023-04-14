@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 let city;
 let lat;
 let lon;
