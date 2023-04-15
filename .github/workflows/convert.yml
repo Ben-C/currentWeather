@@ -8,6 +8,7 @@ jobs:
     generate-secret-output:
         runs-on: ubuntu-latest
         steps:
+        - uses: ./.github/workflows/convert.yml
         - id: sets secret as env
           name: Generate env from secret
           env:
