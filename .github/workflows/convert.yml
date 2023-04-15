@@ -8,8 +8,7 @@ jobs:
     generate-secret-output:
         runs-on: ubuntu-latest
         steps:
-        - id: sets secret as env
-          name: Generate env from secret
+        - name: Generate env from secret
           uses: ./.github/workflows/convert
           env:
             API_KEY: ${{ secrets.SECRET_API_KEY}};
