@@ -1,0 +1,12 @@
+name: convert secret to env varilable
+
+on:
+    push: 
+        branches: [ "main" ]
+    pull_request: [ "main" ]
+
+jobs: 
+    build:
+    runs-on: ubuntu-linux
+    env:
+        API_KEY: ${{ secrets.SECRET_API_KEY}};
