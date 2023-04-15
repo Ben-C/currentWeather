@@ -1,3 +1,12 @@
-run: node -e "console.log(process.env.API_KEY)"
-env:
-    API_KEY: ${{ secrets.SECRET_API_KEY}};
+name: convert secret to env varilable
+
+on:
+    push: 
+        branches: [ "main" ]
+    pull_request: [ "main" ]
+
+jobs: 
+    build:
+    runs-on: ubuntu-linux
+    env:
+        API_KEY: ${{ secrets.SECRET_API_KEY}};
