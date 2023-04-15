@@ -2,12 +2,7 @@ name: convert secret to env varilable
 
 on:
   push:
-    branches:
-        - main
   pull_request:
-    # Sequence of patterns matched against refs/heads
-    branches:    
-      - main
     
 jobs: 
     generate-secret-output:
