@@ -2,7 +2,7 @@
 let city;
 let lat;
 let lon;
-const api_key = 'd3a29b99f9409f5245af2c98a5bd4b88';
+const api_key = $SECRET_API_KEY;
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
     lat = position.coords.latitude;
