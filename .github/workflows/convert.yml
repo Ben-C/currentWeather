@@ -9,6 +9,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Generate env from secret
-          uses: ./.github/workflows/convert
+          uses: ./.github/workflows/convert@main
           env:
             API_KEY: ${{ secrets.SECRET_API_KEY}};
