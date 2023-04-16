@@ -38,9 +38,7 @@ if ("geolocation" in navigator) {
   });
 }
 
-btn.addEventListener("click", getCity);
-
-async function getCity() {
+document.getElementById("searchCity").onclick = async function getCity() {
   city = document.getElementById("userInput").value;
   console.log(city);
   const city_weather =
