@@ -1,0 +1,30 @@
+name: Set Secret as Env Variable
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  set-secret-as-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set environment variable
+        run: echo "export const MY_SECRET = '${{ secrets.SECRET_API_KEY }}';" >> src/secrets.js
+
+      - name: Display environment variable
+        run: cat src/secrets.js
+
+      - name: Commit changes
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "sneblot@gmail.com"
+          git add src/secrets.js
+          git commit -m "Add MY_SECRET as an environment variable"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
