@@ -1,5 +1,5 @@
 //require("dotenv").config();
-import { MY_SECRET } from './secrets.js';
+import { MY_SECRET } from './src/secrets.js';
 let city;
 let lat;
 let lon;
