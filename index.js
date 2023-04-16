@@ -3,7 +3,7 @@ import {MY_SECRET} from "./src/secrets.js";
 let city;
 let lat;
 let lon;
-let api_key = MY_SECRET;//"d3a29b99f9409f5245af2c98a5bd4b88";
+let api_key = MY_SECRET;
 let btn = document.querySelector("button");
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
