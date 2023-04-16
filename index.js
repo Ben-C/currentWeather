@@ -64,3 +64,5 @@ async function getCity() {
     document.getElementById("weather_description").textContent = city_data["weather"][0]["description"];
     document.getElementById("cityName").textContent = name_data[0]["name"];
 };
+
+getCity();
