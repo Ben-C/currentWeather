@@ -1,18 +1,20 @@
-name: Set Secret as Environment Variable
+name: My Workflow
 
-on: [push] # You can customize the event that triggers the workflow
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  set_secret_as_env_variable:
-    runs-on: ubuntu-latest # You can customize the operating system for the job
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2 # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set Secret as Environment Variable
-      run: |
-        echo "$SECRET_API_KEY" >> $GITHUB_ENV
-        echo "SECRET_API_KEY=$SECRET_API_KEY" >> $GITHUB_ENV
-      env:
-        SECRET_API_KEY: ${{ secrets.SECRET_API_KEY }} # Access the repository secret
+      - name: Set environment variable
+        run: echo "export const MY_SECRET = '${{ secrets.SECRET_API_KEY }}';" >> src/secrets.js
+
+      - name: Build and deploy
+        run: npm run build
