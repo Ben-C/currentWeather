@@ -3,7 +3,7 @@ import { MY_SECRET } from './src/secrets.js';
 let city;
 let lat;
 let lon;
-const api_key = MY_SECRET;
+let api_key = MY_SECRET;
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
     lat = position.coords.latitude;
@@ -64,5 +64,3 @@ async function getCity() {
     document.getElementById("weather_description").textContent = city_data["weather"][0]["description"];
     document.getElementById("cityName").textContent = name_data[0]["name"];
 };
-
-getCity();
