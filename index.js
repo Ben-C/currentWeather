@@ -1,8 +1,9 @@
 //require("dotenv").config();
+import { MY_SECRET } from './secrets.js';
 let city;
 let lat;
 let lon;
-const api_key = env.SECRET_API_KEY;
+const api_key = MY_SECRET;
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
     lat = position.coords.latitude;
