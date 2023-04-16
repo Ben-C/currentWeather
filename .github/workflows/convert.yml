@@ -21,6 +21,8 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@gmail.com"
           git add src/secrets.js
           git commit -m "Add MY_SECRET as an environment variable"
           git push
