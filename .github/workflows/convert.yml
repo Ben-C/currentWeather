@@ -1,15 +1,26 @@
-name: convert secret to env varilable
+name: Set Secret as Environment Variable
 
-on:
-  push:
-  pull_request:
-    
-jobs: 
-    generate-secret-output:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Generate env from secret
-        - uses: actions/checkout@v3
-        - uses: ./.github/workflows/convert@main
-          env:
-            API_KEY: ${{ secrets.SECRET_API_KEY}};
+on: [push] # You can customize the event that triggers the workflow
+
+jobs:
+  set_secret_as_env_variable:
+    runs-on: ubuntu-latest # You can customize the operating system for the job
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2 # Checkout the repository
+
+    - name: Set Secret as Environment Variable
+      run: |
+        echo "$SECRET_API_KEY" >> $GITHUB_ENV
+        echo "SECRET_API_KEY=$SECRET_API_KEY" >> $GITHUB_ENV
+      env:
+        SECRET_API_KEY: ${{ secrets.SECRET_API_KEY }} # Access the repository secret
+In this example, the workflow is triggered on a push event. The job runs on the latest version of Ubuntu. The steps in the job checkout the repository using the actions/checkout action and then set the value of the SECRET_API_KEY repository secret as an environment variable using the echo command. The >> operator appends the value to the GITHUB_ENV file, which makes it available as an environment variable in subsequent steps of the same job. Finally, the env section defines the SECRET_API_KEY environment variable and sets its value to the repository secret using the secrets context. Note that repository secrets are encrypted and can only be accessed by GitHub Actions running within the same repository.
+
+
+
+
+Send a message...
+
+
