@@ -1,9 +1,10 @@
 //require("dotenv").config();
-import { MY_SECRET } from './src/secrets.js';
+import {MY_SECRET} from "./src/secrets.js";
 let city;
 let lat;
 let lon;
 let api_key = MY_SECRET;
+let btn = document.querySelector("button");
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
     lat = position.coords.latitude;
@@ -37,7 +38,7 @@ if ("geolocation" in navigator) {
   });
 }
 
-async function getCity() {
+document.getElementById("searchCity").onclick = async function getCity() {
   city = document.getElementById("userInput").value;
   console.log(city);
   const city_weather =
