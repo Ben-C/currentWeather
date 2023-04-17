@@ -8,14 +8,27 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <form>
-      <label fpr="userInput">Enter city name: </label>
+    <form id="cityInputForm">
+      <label for="userInput">Enter city name: </label>
       <input id="userInput" type="text" />
       <button id="searchCity" type="button">Submit</button>
+      <button id="resetLocation" type="button">Reset</button>
     </form>
-    <div><p>Current location: </p><p id="cityName"></p></div>
-    <div><p>The current temperature is: </p><p id="temp"></p></div>
-    <div><p>It actually feels like: </p><p id="feels_like"></p></div>
-    <div><p>Description of the weather is: </p><p id="weather_description"></p></div>
+    <div>
+      <p>Current location:</p>
+      <p id="cityName"></p>
+    </div>
+    <div>
+      <p>The current temperature is:</p>
+      <p id="temp"></p>
+    </div>
+    <div>
+      <p>It actually feels like:</p>
+      <p id="feels_like"></p>
+    </div>
+    <div>
+      <p>Description of the weather is:</p>
+      <p id="weather_description"></p>
+    </div>
   </body>
 </html>
