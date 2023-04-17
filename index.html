@@ -5,9 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Current Weather</title>
+    <link rel="stylesheet" href="./style.css">
     <script type="module" src="./index.js"></script>
   </head>
   <body>
+    <nav class="nav">
+      <a href="/" class="nav__link" data-link>Dashboard</a>
+      <a href="/weather" class="nav__link" data-link>Weather</a>
+      <a href="/settings" class="nav_link" data-link>Settings</a>  
+    </nav>
+    <div id="app">
     <form id="cityInputForm">
       <label for="userInput">Enter city name: </label>
       <input id="userInput" type="text" />
@@ -30,5 +37,6 @@
       <p>Description of the weather is:</p>
       <p id="weather_description"></p>
     </div>
+  </div>
   </body>
 </html>
