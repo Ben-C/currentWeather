@@ -1,10 +1,11 @@
 //require("dotenv").config();
-import {MY_SECRET} from "./src/secrets.js";
+import { MY_SECRET } from "./src/secrets.js";
 let city;
 let lat;
 let lon;
 let api_key = MY_SECRET;
 let btn = document.querySelector("button");
+
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(async (position) => {
     lat = position.coords.latitude;
@@ -21,19 +22,21 @@ if ("geolocation" in navigator) {
     const weather_response = await fetch(weather_url);
     const weather_data = await weather_response.json();
     console.log(weather_data);
-    const city_name = 
-    "https://api.openweathermap.org/geo/1.0/reverse?lat=" + 
-    lat + 
-    "&lon=" + 
-    lon +
-    "&appid=" +
-    api_key;
+    const city_name =
+      "https://api.openweathermap.org/geo/1.0/reverse?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&appid=" +
+      api_key;
     const name_response = await fetch(city_name);
     const name_data = await name_response.json();
     console.log(name_data);
     document.getElementById("temp").textContent = weather_data["main"]["temp"];
-    document.getElementById("feels_like").textContent = weather_data["main"]["feels_like"];
-    document.getElementById("weather_description").textContent = weather_data["weather"][0]["description"];
+    document.getElementById("feels_like").textContent =
+      weather_data["main"]["feels_like"];
+    document.getElementById("weather_description").textContent =
+      weather_data["weather"][0]["description"];
     document.getElementById("cityName").textContent = name_data[0]["name"];
   });
 }
@@ -50,18 +53,51 @@ document.getElementById("searchCity").onclick = async function getCity() {
   const city_response = await fetch(city_weather);
   const city_data = await city_response.json();
   console.log(city_data);
-  const city_name = 
-    "https://api.openweathermap.org/geo/1.0/reverse?lat=" + 
-    city_data["coord"]["lat"] + 
-    "&lon=" + 
+  const city_name =
+    "https://api.openweathermap.org/geo/1.0/reverse?lat=" +
+    city_data["coord"]["lat"] +
+    "&lon=" +
     city_data["coord"]["lon"] +
     "&appid=" +
     api_key;
+  const name_response = await fetch(city_name);
+  const name_data = await name_response.json();
+  console.log(name_data);
+  document.getElementById("temp").textContent = city_data["main"]["temp"];
+  document.getElementById("feels_like").textContent =
+    city_data["main"]["feels_like"];
+  document.getElementById("weather_description").textContent =
+    city_data["weather"][0]["description"];
+  document.getElementById("cityName").textContent = name_data[0]["name"];
+};
+
+document.getElementById("resetLocation").onclick = async function resetCity(){
+  const weather_url =
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&appid=" +
+      api_key +
+      "&units=metric";
+    const weather_response = await fetch(weather_url);
+    const weather_data = await weather_response.json();
+    console.log(weather_data);
+    const city_name =
+      "https://api.openweathermap.org/geo/1.0/reverse?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&appid=" +
+      api_key;
     const name_response = await fetch(city_name);
     const name_data = await name_response.json();
     console.log(name_data);
-    document.getElementById("temp").textContent = city_data["main"]["temp"];
-    document.getElementById("feels_like").textContent = city_data["main"]["feels_like"];
-    document.getElementById("weather_description").textContent = city_data["weather"][0]["description"];
+    document.getElementById("temp").textContent = weather_data["main"]["temp"];
+    document.getElementById("feels_like").textContent =
+      weather_data["main"]["feels_like"];
+    document.getElementById("weather_description").textContent =
+      weather_data["weather"][0]["description"];
     document.getElementById("cityName").textContent = name_data[0]["name"];
-};
+    document.getElementById("cityInputForm").reset();
+  };
